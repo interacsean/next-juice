@@ -1706,6 +1706,11 @@ dom-walk@^0.1.0:
   resolved "https://registry.yarnpkg.com/dom-walk/-/dom-walk-0.1.2.tgz#0c548bef048f4d1f2a97249002236060daa3fd84"
   integrity sha512-6QvTW9mrGeIegrFXdtQi9pk7O/nSK6lSdXW2eqUspN5LWD7UTji2Fqw5V2YLjBpHEoU9Xl/eUWNpDeZvoyOv2w==
 
+domakey@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/domakey/-/domakey-0.0.6.tgz#503aba31b0b98bfa0e28dfbf41bbf644f8edae12"
+  integrity sha512-MWWMrLrdTwinGX1NU+CaM9XuIadMx5OVvWflBQHbRChwODGMbZFJjcQUWWZRPNu+oDyEAoNCQMoVczZe2Xf6Iw==
+
 electron-to-chromium@^1.4.202:
   version "1.4.210"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.210.tgz#12611fe874b833a3bf3671438b5893aba7858980"

@@ -48,6 +48,7 @@ const Nav: FC<{}> = (props): ReactElement<'div'> => {
     >
       <NavLink href={ROUTE_PATHS.ROOT}>Home</NavLink>
       <NavLink href={ROUTE_PATHS.CONTACT}>Contact</NavLink>
+        {/* Add nav menu items here */}
     </Box>
     // </MobileMenu>
   );

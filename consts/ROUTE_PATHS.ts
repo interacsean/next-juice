@@ -5,6 +5,7 @@
 const ROUTE_PATHS = {
   ROOT: '/',
   CONTACT: '/contact',
+  /* ! New Routes here ! */
 };
 
 export default ROUTE_PATHS;

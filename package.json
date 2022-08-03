@@ -27,6 +27,7 @@
     "@types/node": "18.6.3",
     "@types/react": "18.0.15",
     "babel-plugin-inline-react-svg": "1.1.1",
+    "domakey": "^0.0.6",
     "next-on-netlify": "3.0.1",
     "prettier": "2.7.1",
     "typescript": "4.7.4"

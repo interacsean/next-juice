@@ -1,0 +1,34 @@
+{
+  "name": "next-juice-project",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3333",
+    "build": "next build",
+    "start": "next start",
+    "postbuild": "next-on-netlify"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "2.2.4",
+    "@emotion/react": "11.10.0",
+    "@emotion/styled": "11.10.0",
+    "cross-fetch": "3.0.6",
+    "errable": "0.3.5",
+    "framer-motion": "6.5.1",
+    "next": "12.2.3",
+    "ramda": "0.28.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-responsive-modal": "6.2.0",
+    "recoil": "0.7.4"
+  },
+  "devDependencies": {
+    "@babel/core": "7.18.10",
+    "@types/node": "18.6.3",
+    "@types/react": "18.0.15",
+    "babel-plugin-inline-react-svg": "1.1.1",
+    "next-on-netlify": "3.0.1",
+    "prettier": "2.7.1",
+    "typescript": "4.7.4"
+  }
+}

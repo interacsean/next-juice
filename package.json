@@ -12,6 +12,7 @@
     "@chakra-ui/react": "2.2.4",
     "@emotion/react": "11.10.0",
     "@emotion/styled": "11.10.0",
+    "axios": "0.27.2",
     "cross-fetch": "3.0.6",
     "errable": "0.3.5",
     "framer-motion": "6.5.1",
@@ -19,7 +20,6 @@
     "ramda": "0.28.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-responsive-modal": "6.2.0",
     "recoil": "0.7.4"
   },
   "devDependencies": {

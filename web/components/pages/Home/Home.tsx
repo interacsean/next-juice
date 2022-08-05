@@ -1,16 +1,24 @@
 import { NextPage } from 'next';
 import React from 'react';
-import { Text } from '@chakra-ui/react';
+import { Button, Text } from '@chakra-ui/react';
+import axios from 'axios';
 import Section from '../../layouts/Section/Section';
+import Site from 'config/Site';
+import handleApiResponse from 'web/services/api/handleApiResponse';
+import useApiEndpoint from 'web/utils/hooks/useApiEndpoint';
 
-type HomePublicProps = {};
+const getHealth = () => handleApiResponse(axios.get(`${Site.API_BASE_URL}/health`));
 
-const Home: NextPage<HomePublicProps> = (
-  _props: HomePublicProps,
-) => {
+const Home: NextPage = () => {
+  const [{ value, error, message, status }, callGetHealth ] = useApiEndpoint(getHealth, null);
+  
   return (
     <Section>
-      <Text>Hello world</Text>
+      <Text my={2}>Hello world</Text>
+      <Button onClick={callGetHealth} my={2}>Make async call</Button>
+      {value && (
+        <Text my={2}>Health ok</Text>
+      )}
     </Section>
   );
 };

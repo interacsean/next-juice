@@ -7,8 +7,8 @@ if (!Env.IS_TEST) {
   });
 }
 export default {
-  API_BASE_URL: process?.env?.NEXT_PUBLIC_API_BASE_URL || "/api/",
-  STATIC_URL: process?.env?.NEXT_PUBLIC_STATIC_URL || "/",
+  API_BASE_URL: process?.env?.NEXT_PUBLIC_API_BASE_URL || "/api",
+  STATIC_URL: process?.env?.NEXT_PUBLIC_STATIC_URL || "",
   // e.g.:
   PASSWORD_REQUIREMENT_REGEX: new RegExp('^(?=.*?[A-Za-zd])(?=.*?[0-9]).{8,}$'),
 };

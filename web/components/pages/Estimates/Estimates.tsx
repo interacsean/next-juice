@@ -10,7 +10,7 @@ import handleApiResponse from 'web/services/api/handleApiResponse';
 type EstimatesPublicProps = {};
 
 const fetchSavedEstimates = () => handleApiResponse(
-  axios.get(`${Site.API_BASE_URL}/estimates`)
+  axios.get(`${Site.API_BASE_URL}/estimates`),
 );
 
 const Estimates: NextPage<EstimatesPublicProps> = (

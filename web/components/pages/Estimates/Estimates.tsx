@@ -6,26 +6,24 @@ import useAsyncData from 'web/utils/hooks/useAsyncData';
 import axios from 'axios';
 import Site from 'config/Site';
 import handleApiResponse from 'web/services/api/handleApiResponse';
+import { Button } from '@chakra-ui/react';
+import useToggleState from 'web/utils/hooks/useToggleState';
+import EstimatesList from 'web/components/pages/Estimates/EstimatesList';
+import CreateEstimate from 'web/components/pages/Estimates/CreateEstimate';
 
 type EstimatesPublicProps = {};
-
-const fetchSavedEstimates = () => handleApiResponse(
-  axios.get(`${Site.API_BASE_URL}/estimates`),
-);
 
 const Estimates: NextPage<EstimatesPublicProps> = (
   _props: EstimatesPublicProps,
 ) => {
-  const [savedEstimates, getEstimates] = useAsyncData(fetchSavedEstimates)
-  useEffect(getEstimates, []);
+  const { value: isCreating, enable: enterCreation, disable: existCreation } = useToggleState();
 
   return (
     <Section>
-      {
-        savedEstimates.error && (
-          <Box bgColor="panel.100">Error: {savedEstimates.error.toString()}</Box>
-        )}
-      <Text>Hello world</Text>
+      {isCreating
+        ? <CreateEstimate />
+        : <EstimatesList onAddClick={enterCreation} />
+      }
     </Section>
   );
 };

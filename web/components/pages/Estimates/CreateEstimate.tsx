@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form';
 import { set, lensPath, view } from 'ramda';
 import { rand } from 'utils/data/rand/rand';
 import { StrRecord } from 'types/util/StrRecord';
+import targetValueOf from 'web/utils/html/targetValueOf';
+import usePartialCallback from 'web/utils/hooks/usePartialCallback';
 
 type CreateEstimatePublicProps = {};
 
@@ -24,7 +26,6 @@ type EstimateState = EstimateRecord[];
 
 const reducer = (state: EstimateState, action: Actions) => {
   if (action.type === 'add') {
-    console.log({ state, action });
     return set(
       lensPath(action.path || []),
       view(lensPath(action.path || []), state).concat([{ id: newId(), ...action.value }]),
@@ -33,7 +34,7 @@ const reducer = (state: EstimateState, action: Actions) => {
   } else if (action.type === 'edit') {
     return set(
       lensPath(action.path || []),
-      view(lensPath(action.path || []), state).concat([action.value]),
+      action.value,
       state,
     ) as EstimateState;
   }
@@ -56,20 +57,30 @@ function EstimateRow(props: SubEstimateProps) {
     },
     [props.dispatch],
   );
+  const updateValue = React.useCallback(
+    (prop: string, value: string) => {
+      props.dispatch({ type: 'edit', path: [...props.path, prop], value });
+    },
+    [props.dispatch],
+  );
+  const updateName = usePartialCallback(updateValue, ['name']);
+
   return (
     <>
       <Box display="flex">
-        <Text>{props.estimate.name || 'uname'}</Text>
-        <Box display="flex" justifyContent="flex-end">
+        <Input value={props.estimate.name} onChange={targetValueOf(updateName)}/>
+        <Box display="flex" justifyContent="flex-end" flex="1">
           <Button onClick={addSub} variant="outline">+</Button>
         </Box>
       </Box>
-      {props.estimate.sub.map(
-        (est, k) => (
-          <EstimateRow id={est.id} key={est.id} estimate={est} path={[...props.path, 'sub', k]}
-                       dispatch={props.dispatch}/>
-        ),
-      )}
+      <Box pl={3}>
+        {props.estimate.sub.map(
+          (est, k) => (
+            <EstimateRow id={est.id} key={est.id} estimate={est} path={[...props.path, 'sub', k]}
+                         dispatch={props.dispatch}/>
+          ),
+        )}
+      </Box>
     </>
   )
 }
@@ -77,35 +88,35 @@ function EstimateRow(props: SubEstimateProps) {
 const CreateEstimate: React.FC<CreateEstimatePublicProps> = (
   _props: CreateEstimatePublicProps,
 ) => {
-  const [ estimates, dispatch ] = useReducer(reducer, []);
-  const {register, handleSubmit} = useForm();
+  const [estimates, dispatch] = useReducer(reducer, []);
+  const { register, handleSubmit } = useForm();
   const onSubmit = React.useCallback(
-  (data) => {
-  console.log(data);
-},
-  [],
+    (data) => {
+      console.log(data);
+    },
+    [],
   );
 
   const addRow = React.useCallback(
-  () => dispatch({type: 'add', path: [], value: newRecord}),
-  [dispatch],
+    () => dispatch({ type: 'add', path: [], value: newRecord }),
+    [dispatch],
   );
 
   return (
-  <Box>
-  <form onSubmit={handleSubmit(onSubmit)}>
-  <FormControl>
-  <FormLabel>Name</FormLabel>
-  <Input name="name" placeholder="Name" {...register('name')} />
-  </FormControl>
-  </form>
-{estimates.map(
-  (est, k) => (
-  <EstimateRow id={est.id} key={est.id} estimate={est} path={[k]} dispatch={dispatch} />
-  ),
-  )}
-  <Button variant="outline" onClick={addRow}>+</Button>
-  </Box>
+    <Box>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <FormControl>
+          <FormLabel>Name</FormLabel>
+          <Input name="name" placeholder="Name" {...register('name')} />
+        </FormControl>
+      </form>
+      {estimates.map(
+        (est, k) => (
+          <EstimateRow id={est.id} key={est.id} estimate={est} path={[k]} dispatch={dispatch}/>
+        ),
+      )}
+      <Button variant="outline" onClick={addRow}>+</Button>
+    </Box>
   );
 };
 

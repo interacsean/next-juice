@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import usePartialCB from "./usePartialCB";
+import usePartialCB from "web/utils/hooks/usePartialCallback";
 
 const useToggleState = (dflt: boolean = false) => {
   const [value, setValue] = useState(dflt);

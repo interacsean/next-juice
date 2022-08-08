@@ -1,6 +1,6 @@
 export type getEstimatesResponse = {}[]
 
 export enum EstimatesMessages {
-  MESSAGES = 'MESSAGES',
+  ESTIMATES = 'ESTIMATES',
   DATABASE_ERROR = 'DATABASE_ERROR',
 }

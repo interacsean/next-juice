@@ -8,7 +8,7 @@ const getEstimatesRoute = async (_req: NextApiRequest, res: NextApiResponse) => 
     .then(
       data => res.send(
         createResponse(
-          EstimatesMessages.MESSAGES,
+          EstimatesMessages.ESTIMATES,
           { data },
         ),
       ),

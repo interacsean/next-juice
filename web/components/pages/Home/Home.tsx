@@ -5,12 +5,12 @@ import axios from 'axios';
 import Section from '../../layouts/Section/Section';
 import Site from 'config/Site';
 import handleApiResponse from 'web/services/api/handleApiResponse';
-import useApiEndpoint from 'web/utils/hooks/useApiEndpoint';
+import useApiEndpoint from 'web/services/api/useApiEndpoint';
 
 const getHealth = () => handleApiResponse(axios.get(`${Site.API_BASE_URL}/health`));
 
 const Home: NextPage = () => {
-  const [{ value, error, message, status }, callGetHealth ] = useApiEndpoint(getHealth, null);
+  const [{ value, error, message, status }, callGetHealth ] = useApiEndpoint('health');
   
   return (
     <Section>

@@ -53,11 +53,13 @@ type SubEstimateProps = {
   orderId: number;
   effortConfig: EffortConfig;
 };
+
 enum EffortType {
   PERCENT = "PERCENT",
   QUANTITY = "QUANTITY",
   CALCULATED = "CALCULATED",
 }
+
 type EffortConfig = {
   name: string;
   type: EffortType;

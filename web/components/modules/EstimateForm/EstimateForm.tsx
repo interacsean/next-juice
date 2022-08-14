@@ -49,7 +49,18 @@ type SubEstimateProps = {
   dispatch: Dispatch<any>,
   id: string;
   orderId: number;
+  effortConfig: EffortConfig;
 }
+enum EffortType {
+  PERCENT = "PERCENT",
+  QUANTITY = "QUANTITY",
+  CALCULATED = "CALCULATED",
+}
+type EffortConfig = {
+  name: string,
+  type: EffortType,
+  calculation?: string, // for now, eval'd js ⚠️ security issue
+}[];
 
 function EstimateRow(props: SubEstimateProps) {
   const addSub = React.useCallback(

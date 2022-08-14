@@ -1,9 +1,11 @@
 import React from 'react';
 import { Box, Button, Text, FormControl, Input, FormLabel } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
-import EstimateForm from 'web/components/modules/EstimateForm/EstimateForm';
+import EstimateForm, { Estimates } from 'web/components/modules/EstimateForm/EstimateForm';
 
-type CreateEstimatePublicProps = {};
+interface CreateEstimatePublicProps {
+  onCreate: (est: Estimates) => void;
+};
 
 const CreateEstimate: React.FC<CreateEstimatePublicProps> = (
   _props: CreateEstimatePublicProps,

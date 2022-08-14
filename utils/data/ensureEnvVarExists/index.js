@@ -1,4 +1,4 @@
-const R = require('ramda');
+const R = require("ramda");
 
 const ensureEnvVarExists = (keys, envVars) => {
   R.pipe(
@@ -9,7 +9,7 @@ const ensureEnvVarExists = (keys, envVars) => {
     (errors) => {
       if (errors.length) {
         throw new Error(
-          `The following env vars were undefined: ${errors.join(', ')}`,
+          `The following env vars were undefined: ${errors.join(", ")}`,
         );
       }
     },

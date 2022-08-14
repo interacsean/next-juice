@@ -1,6 +1,6 @@
-import useDependentCallback from './useDependentCallback';
-import { Nullable } from 'errable';
-import { Optional } from 'errable';
+import useDependentCallback from "./useDependentCallback";
+import { Nullable } from "errable";
+import { Optional } from "errable";
 
 export default function useUpdateStateVar<S>(
   dispatchTxfn: (fn: (s: S) => S) => void,

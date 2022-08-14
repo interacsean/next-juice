@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 export enum Status {
   INITIAL = "INITIAL",
@@ -12,16 +12,16 @@ const initState = {
   error: null,
 };
 
-export default function useAsyncData<T>(asyncFn, initData: T | null = null){
+export default function useAsyncData<T>(asyncFn, initData: T | null = null) {
   const [state, setState] = useState({ ...initState, value: initData });
 
   function getter(...params) {
     setState({ ...initState, status: Status.FETCHING });
     asyncFn(...params)
-      .then(val => {
+      .then((val) => {
         setState({ status: Status.COMPLETE, value: val, error: null });
       })
-      .catch(err => {
+      .catch((err) => {
         setState({ status: Status.ERROR, error: err, value: null });
       });
   }

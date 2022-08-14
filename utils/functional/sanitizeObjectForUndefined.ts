@@ -1,4 +1,4 @@
-﻿import * as R from 'ramda';
+﻿import * as R from "ramda";
 
 export default function sanitizeObjectForUndefined(
   obj: any,
@@ -12,7 +12,7 @@ export default function sanitizeObjectForUndefined(
   Object.keys(obj).forEach((key) => {
     if (R.isNil(obj[key])) {
       newObj[key] = placeHolderValueForUndefined;
-    } else if (obj[key] && typeof obj[key] === 'object') {
+    } else if (obj[key] && typeof obj[key] === "object") {
       const isArray = obj[key] instanceof Array;
       if (isArray) {
         const newArray = obj[key].map((arrayItem: any) => {
@@ -20,7 +20,7 @@ export default function sanitizeObjectForUndefined(
             return placeHolderValueForUndefined;
           }
 
-          if (typeof arrayItem === 'object') {
+          if (typeof arrayItem === "object") {
             return sanitizeObjectForUndefined(
               arrayItem,
               placeHolderValueForUndefined,

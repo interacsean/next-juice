@@ -1,8 +1,8 @@
-import getEstimates from '../../../api/routes/estimates/getEstimates';
-import mapMethods from 'api/utils/mapMethods';
+import getEstimates from "../../../api/routes/estimates/getEstimates";
+import mapMethods from "api/utils/mapMethods";
 
 const routeHandler = mapMethods({
-  GET: getEstimates
-})
+  GET: getEstimates,
+});
 
 export default routeHandler;

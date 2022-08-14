@@ -8,11 +8,11 @@ export default class Document extends NextDocument {
       <Html lang="en">
         <Head />
         <body>
-        <ColorModeScript
-          initialColorMode={chakraTheme.config.initialColorMode}
-        />
-        <Main />
-        <NextScript />
+          <ColorModeScript
+            initialColorMode={chakraTheme.config.initialColorMode}
+          />
+          <Main />
+          <NextScript />
         </body>
       </Html>
     );

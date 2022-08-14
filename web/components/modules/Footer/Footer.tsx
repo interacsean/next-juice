@@ -1,11 +1,9 @@
-import React, { FC } from 'react';
-import { Text, VStack } from '@chakra-ui/react';
+import React, { FC } from "react";
+import { Text, VStack } from "@chakra-ui/react";
 
 type FooterProps = {};
 
-const Footer: FC<FooterProps> = (
-  props: FooterProps,
-) => {
+const Footer: FC<FooterProps> = (props: FooterProps) => {
   return (
     <VStack>
       <Text mt={1} color="light.100">

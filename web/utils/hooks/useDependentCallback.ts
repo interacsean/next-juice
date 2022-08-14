@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback } from "react";
 
 const useDependentCallback = <A extends any[], B extends any[], T>(
   callback: (inputs: B, args: A) => T,

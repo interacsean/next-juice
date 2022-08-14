@@ -1,4 +1,4 @@
-import palette from './palette';
+import palette from "./palette";
 
 type ThemeCfg = {
   header?: {
@@ -6,31 +6,35 @@ type ThemeCfg = {
     backgroundColor?: string;
     transparentBg?: boolean;
     heroImage?: string;
-  },
+  };
   nav?: {
     itemColor?: string;
     activeItemColor?: string;
-    separator?: 'none' | 'pipe' | 'bullet';
-    activeDecoration?: 'bold' | 'underline' | 'altColor';
-    hoverDecoration?: 'sameAsActive' | 'underline' | 'underlineSemiTransparent' | 'thinUnderline';
+    separator?: "none" | "pipe" | "bullet";
+    activeDecoration?: "bold" | "underline" | "altColor";
+    hoverDecoration?:
+      | "sameAsActive"
+      | "underline"
+      | "underlineSemiTransparent"
+      | "thinUnderline";
     px?: string | number;
     py?: string | number;
-  },
+  };
   section?: {
-    vPadding?: string | number,
-    maxContentWidth?: string | number,
+    vPadding?: string | number;
+    maxContentWidth?: string | number;
     backgroundColor?: string;
     altBackgroundColor?: string;
-  },
+  };
   footer?: {
     vPadding: string | number;
     backgroundColor?: string;
-  },
+  };
   body?: {
     hPadding?: string | number;
-  },
+  };
   enableLogin?: boolean;
-}
+};
 
 const appTheme: ThemeCfg = {
   body: {
@@ -48,14 +52,14 @@ const appTheme: ThemeCfg = {
   },
   section: {
     vPadding: 4,
-    maxContentWidth: '1000px',
+    maxContentWidth: "1000px",
     backgroundColor: palette.panel[100],
     altBackgroundColor: palette.panel[900],
   },
   footer: {
     vPadding: 5,
     backgroundColor: palette.panel[100],
-  }
-}
+  },
+};
 
 export default appTheme;

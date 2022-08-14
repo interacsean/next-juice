@@ -1,14 +1,14 @@
-import React, { FC, ReactElement } from 'react';
+import React, { FC, ReactElement } from "react";
 
-import Head from 'next/head';
+import Head from "next/head";
 
-import SITE from '../../../../config/Site';
+import SITE from "../../../../config/Site";
 
-import { HtmlHeadProps } from './HtmlHead.props';
+import { HtmlHeadProps } from "./HtmlHead.props";
 
 const HtmlHead: FC<HtmlHeadProps> = (
   _props: HtmlHeadProps,
-): ReactElement<'div'> => {
+): ReactElement<"div"> => {
   return (
     <Head>
       <title key="htmlTitle">Site</title>
@@ -46,7 +46,10 @@ const HtmlHead: FC<HtmlHeadProps> = (
         content={`${SITE.STATIC_URL}/images/app-icon/ms-icon-144x144.png`}
       />
       <meta name="theme-color" content="#352E3F" />
-        <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap" rel="stylesheet" />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap"
+        rel="stylesheet"
+      />
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
@@ -54,30 +57,18 @@ const HtmlHead: FC<HtmlHeadProps> = (
       <meta name="HandheldFriendly" content="True" />
       <meta name="MobileOptimized" content="320" />
       <meta httpEquiv="cleartype" content="on" />
-      <meta
-        content=""
-        name="keywords"
-      />
-      <meta
-        content=""
-        name="description"
-      />
+      <meta content="" name="keywords" />
+      <meta content="" name="description" />
       <meta content="index,follow" name="robots" />
       <meta itemProp="name" content="" />
-      <meta
-        itemProp="description"
-        content=""
-      />
+      <meta itemProp="description" content="" />
       <meta itemProp="url" content="" />
       <meta
         itemProp="image"
         content={`${SITE.STATIC_URL}/images/opc-sqr.jpg`}
       />
       <meta property="og:title" content="" />
-      <meta
-        property="og:description"
-        content=""
-      />
+      <meta property="og:description" content="" />
       <meta property="og:url" content="" />
       <meta
         property="og:image"

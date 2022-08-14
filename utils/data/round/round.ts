@@ -1,4 +1,4 @@
-import { Nullable } from 'errable';
+import { Nullable } from "errable";
 
 function round(n: number, decimals?: number): number;
 function round(n: Nullable<number>, decimals?: number): Nullable<number>;

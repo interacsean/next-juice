@@ -1,3 +1,3 @@
-import HtmlHead from './HtmlHead';
+import HtmlHead from "./HtmlHead";
 
 export default HtmlHead;

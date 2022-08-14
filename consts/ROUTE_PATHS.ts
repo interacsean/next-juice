@@ -3,8 +3,8 @@
  * route path mapping operates
  */
 const ROUTE_PATHS = {
-  ROOT: '/',
-  CONTACT: '/contact',
+  ROOT: "/",
+  CONTACT: "/contact",
   /* ! New Routes here ! */
 };
 

@@ -6,7 +6,8 @@
     "dev": "next dev -p 3333",
     "build": "next build",
     "start": "next start",
-    "postbuild": "next-on-netlify"
+    "postbuild": "next-on-netlify",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@chakra-ui/react": "2.2.4",

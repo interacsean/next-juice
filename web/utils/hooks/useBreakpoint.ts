@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from "react";
 
 const throttle = <A extends any[], F extends Function>(
   fn: F,
@@ -28,24 +28,24 @@ const getDeviceConfig = (width: number): BreakPoint => {
    * Stay in sync with scss breakpoints
    */
   if (width >= BKPT_DESKTOP_LARGE) {
-    return 'desktop-large';
+    return "desktop-large";
   } else if (width >= BKPT_DESKTOP_SMALL && width < BKPT_DESKTOP_LARGE) {
-    return 'desktop-small';
+    return "desktop-small";
   } else if (width >= BKPT_TABLET_980 && width < BKPT_DESKTOP_SMALL) {
-    return 'tablet-large';
+    return "tablet-large";
   } else if (width >= BKPT_TABLET && width < BKPT_TABLET_980) {
-    return 'tablet';
+    return "tablet";
   } /* if(width < BKPT_TABLET) */ else {
-    return 'mobile';
+    return "mobile";
   }
 };
 
 type BreakPoint =
-  | 'desktop-large'
-  | 'desktop-small'
-  | 'tablet-large'
-  | 'tablet'
-  | 'mobile';
+  | "desktop-large"
+  | "desktop-small"
+  | "tablet-large"
+  | "tablet"
+  | "mobile";
 
 const useBreakpoint = (): BreakPoint => {
   // @ts-ignore
@@ -58,8 +58,8 @@ const useBreakpoint = (): BreakPoint => {
   );
 
   useEffect(() => {
-    win?.addEventListener('resize', setBreakpoint);
-    return () => win?.removeEventListener('resize', setBreakpoint);
+    win?.addEventListener("resize", setBreakpoint);
+    return () => win?.removeEventListener("resize", setBreakpoint);
   }, [win]);
 
   return brkPnt;

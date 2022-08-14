@@ -3,7 +3,7 @@ import palette from "../palette";
 import fontWeights from "../fontWeights";
 
 const clickableProps = {
-  color: palette.link['500'],
+  color: palette.link["500"],
   cursor: "pointer",
   _active: {
     opacity: 0.6,

@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-import { Nullable } from 'errable';
-import { Optional } from 'errable';
+import { useEffect } from "react";
+import { Nullable } from "errable";
+import { Optional } from "errable";
 
 export default function useResetStateVar<S>(
   updateStateFn: (k: keyof S, v: S[keyof S]) => void,

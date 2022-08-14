@@ -1,5 +1,5 @@
-import { Nullable } from 'errable';
-import curry from '../../functional/curry';
+import { Nullable } from "errable";
+import curry from "../../functional/curry";
 
 function indexOf_<T>(needle: T, haystack: T[]) {
   const idx = haystack.indexOf(needle);

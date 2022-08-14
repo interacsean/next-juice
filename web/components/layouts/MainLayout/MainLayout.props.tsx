@@ -1,4 +1,4 @@
-import { ComponentWithChildren } from '../../../../types/util/ComponentWithChildren';
+import { ComponentWithChildren } from "../../../../types/util/ComponentWithChildren";
 
 export interface MainLayoutPublicProps extends ComponentWithChildren {
   hideHero?: boolean;

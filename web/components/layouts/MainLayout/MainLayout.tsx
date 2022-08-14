@@ -1,13 +1,13 @@
-import React, { FC } from 'react';
-import { useRouter } from 'next/router';
-import { Box } from '@chakra-ui/react';
-import Nav from '../../modules/Nav';
-import { MainLayoutProps } from './MainLayout.props';
-import routes from '../../../../consts/ROUTE_PATHS';
-import Footer from '../../modules/Footer';
-import appTheme from '../../../theme/appTheme';
-import Section from '../Section';
-import { ComponentWithChildren } from '../../../../types/util/ComponentWithChildren';
+import React, { FC } from "react";
+import { useRouter } from "next/router";
+import { Box } from "@chakra-ui/react";
+import Nav from "../../modules/Nav";
+import { MainLayoutProps } from "./MainLayout.props";
+import routes from "../../../../consts/ROUTE_PATHS";
+import Footer from "../../modules/Footer";
+import appTheme from "../../../theme/appTheme";
+import Section from "../Section";
+import { ComponentWithChildren } from "../../../../types/util/ComponentWithChildren";
 
 const SectionHeader = ({ children }: ComponentWithChildren) => (
   <Section
@@ -22,7 +22,7 @@ const SectionHeader = ({ children }: ComponentWithChildren) => (
   >
     {children}
   </Section>
-)
+);
 
 const SectionFooterCtnr = ({ children }: ComponentWithChildren) => (
   <Section
@@ -41,23 +41,12 @@ const MainLayout: FC<MainLayoutProps> = (props: MainLayoutProps) => {
   // const { heroImage } = Theme;
 
   return (
-    <Box
-      display="flex"
-      flexDir="column"
-      alignItems="stretch"
-      minHeight="100vh"
-    >
+    <Box display="flex" flexDir="column" alignItems="stretch" minHeight="100vh">
       <SectionHeader>
-        <Box onClick={() => router.push(routes.ROOT)}>
-          {/*<Logo />*/}
-        </Box>
-        <Nav/>
+        <Box onClick={() => router.push(routes.ROOT)}>{/*<Logo />*/}</Box>
+        <Nav />
       </SectionHeader>
-      <Box
-        as={'main'}
-        flexDir="column"
-        alignItems="stretch"
-      >
+      <Box as={"main"} flexDir="column" alignItems="stretch">
         {props.children}
       </Box>
       <SectionFooterCtnr>

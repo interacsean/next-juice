@@ -43,7 +43,7 @@ const elementColors = {
   disabled: {
     100: "#7c7c7c",
   },
-}
+};
 
 export default {
   ...colorPalette,

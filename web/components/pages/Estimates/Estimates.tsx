@@ -4,7 +4,7 @@ import Section from "../../layouts/Section/Section";
 import useToggleState from "web/utils/hooks/useToggleState";
 import EstimatesList from "web/components/pages/Estimates/EstimatesList";
 import CreateEstimate from "web/components/pages/Estimates/CreateEstimate";
-import { Estimates } from "web/components/modules/EstimateForm/EstimateForm";
+import { EstimateState } from "web/components/modules/EstimateForm/estimates.types";
 
 type EstimatesPublicProps = {};
 
@@ -17,7 +17,7 @@ const Estimates: NextPage<EstimatesPublicProps> = (
     disable: existCreation,
   } = useToggleState(true);
 
-  const onEstimateCreate = React.useCallback((estCreated: Estimates) => {
+  const onEstimateCreate = React.useCallback((estCreated: EstimateState) => {
     console.log({ estCreated });
   }, []);
 

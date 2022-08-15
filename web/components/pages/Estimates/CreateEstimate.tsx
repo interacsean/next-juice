@@ -8,12 +8,11 @@ import {
   FormLabel,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
-import EstimateForm, {
-  Estimates,
-} from "web/components/modules/EstimateForm/EstimateForm";
+import { EstimateForm } from "web/components/modules/EstimateForm/EstimateForm";
+import { EstimateState } from "web/components/modules/EstimateForm/estimates.types";
 
 interface CreateEstimatePublicProps {
-  onCreate: (est: Estimates) => void;
+  onCreate: (est: EstimateState) => void;
 }
 
 const CreateEstimate: React.FC<CreateEstimatePublicProps> = (

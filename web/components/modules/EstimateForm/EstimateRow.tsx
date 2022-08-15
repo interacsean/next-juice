@@ -1,8 +1,8 @@
-import { EstimateRecord } from "web/components/modules/EstimateForm/estimates.types";
 import React, { Dispatch } from "react";
+import { Box, Button, Input, HStack } from "@chakra-ui/react";
 import usePartialCallback from "web/utils/hooks/usePartialCallback";
-import { Box, Button, Input } from "@chakra-ui/react";
 import targetValueOf from "web/utils/html/targetValueOf";
+import { EstimateConfig, EstimateRecord } from "./estimates.types";
 
 type SubEstimateProps = {
   estimate: EstimateRecord;
@@ -10,7 +10,7 @@ type SubEstimateProps = {
   dispatch: Dispatch<any>;
   id: string;
   orderId: number;
-  effortConfig: EffortConfig;
+  effortConfig: EstimateConfig;
 };
 
 function EstimateRow(props: SubEstimateProps) {
@@ -32,7 +32,8 @@ function EstimateRow(props: SubEstimateProps) {
   );
   const updateName = usePartialCallback(updateValue, [["name"]]);
   const updateEffort = React.useCallback(
-    (val: string) => updateValue(["effort", "days"], val),
+    (effortColName: string) => (val: string) =>
+      updateValue(["values", effortColName], val),
     [updateValue],
   );
   const addRow = React.useCallback(
@@ -46,25 +47,29 @@ function EstimateRow(props: SubEstimateProps) {
 
   return (
     <>
-      <Box display="flex">
+      <HStack>
         <Input
-          placeholder="description"
-          value={props.estimate.name}
+          placeholder="Description"
+          value={props.estimate.name || ""}
           onChange={targetValueOf(updateName)}
+          flexGrow="1"
         />
-        <Input
-          placeholder="effort"
-          value={props.estimate.effort.days}
-          onChange={targetValueOf(updateEffort)}
-        />
-        <Box></Box>
+        {props.effortConfig.columns.map((col, i) => (
+          <Input
+            key={`${col.name}-${i}`}
+            placeholder={col.name}
+            value={props.estimate.values[col.name] || ""}
+            onChange={targetValueOf(updateEffort(col.name))}
+            width={"6em"}
+          />
+        ))}
         <Box display="flex" justifyContent="flex-end" flex="1">
           <Button onClick={addSub} variant="outline">
             +
           </Button>
         </Box>
-      </Box>
-      <Box pl={3}>
+      </HStack>
+      <Box pl={5}>
         {props.estimate.sub.map((est, k) => (
           <EstimateRow
             id={est.id}
@@ -73,6 +78,7 @@ function EstimateRow(props: SubEstimateProps) {
             estimate={est}
             path={[...props.path, props.orderId, "sub"]}
             dispatch={props.dispatch}
+            effortConfig={props.effortConfig}
           />
         ))}
         {!!props.estimate.sub.length && (

@@ -1,13 +1,13 @@
 import { StrRecord } from "types/util/StrRecord";
-import { set, lensPath, view } from "ramda";
+import { lensPath, set, view } from "ramda";
 import { rand } from "utils/data/rand/rand";
-import { EstimateState } from "./estimates.types";
+import { EffortType, EstimateState } from "./estimates.types";
 
 type Actions = {
   type: string;
 } & StrRecord<any>;
 
-const newRecord = { name: "", sub: [], effort: {} };
+const newRecord = { name: "", sub: [], values: {} };
 
 const _newId = () => rand(0, 1000000);
 
@@ -15,8 +15,8 @@ const estimateReducer = (state: EstimateState, action: Actions) => {
   console.log({ state, action });
   if (action.type === "add") {
     return set(
-      lensPath(["estimates", action.path || []]),
-      view(lensPath(["estimates", action.path || []]), state).concat([
+      lensPath(["estimates", ...(action.path || [])]),
+      view(lensPath(["estimates", ...(action.path || [])]), state).concat([
         { id: _newId(), ...newRecord },
       ]),
       state,
@@ -34,7 +34,12 @@ const estimateReducer = (state: EstimateState, action: Actions) => {
 const initialState: EstimateState = {
   estimates: [],
   config: {
-    columns: [],
+    columns: [
+      {
+        name: "Effort",
+        type: EffortType.QUANTITY,
+      },
+    ],
   },
 };
 

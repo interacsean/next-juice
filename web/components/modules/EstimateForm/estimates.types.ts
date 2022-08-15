@@ -3,7 +3,7 @@ import { StrRecord } from "types/util/StrRecord";
 export type EstimateRecord = {
   name: string;
   sub: EstimateRecord[];
-  effort: StrRecord<number>;
+  values: StrRecord<number>;
   id: string;
 };
 

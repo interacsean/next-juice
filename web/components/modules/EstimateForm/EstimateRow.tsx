@@ -16,8 +16,8 @@ type SubEstimateProps = {
 function EstimateRow(props: SubEstimateProps) {
   const addSub = React.useCallback(() => {
     props.dispatch({
-      type: "add",
-      path: [...props.path, props.orderId, "sub"],
+      type: "indent",
+      path: [...props.path, props.orderId],
     });
   }, [props.dispatch]);
   const updateValue = React.useCallback(
@@ -48,6 +48,9 @@ function EstimateRow(props: SubEstimateProps) {
   return (
     <>
       <HStack>
+        <Button onClick={addSub} variant="ghost" size="sm" minWidth="2.5rem">
+          &#8594;
+        </Button>
         <Input
           placeholder="Description"
           value={props.estimate.name || ""}
@@ -63,11 +66,11 @@ function EstimateRow(props: SubEstimateProps) {
             width={"6em"}
           />
         ))}
-        <Box display="flex" justifyContent="flex-end" flex="1">
+        {/* <Box display="flex" justifyContent="flex-end" flex="1">
           <Button onClick={addSub} variant="outline">
             +
           </Button>
-        </Box>
+        </Box> */}
       </HStack>
       <Box pl={5}>
         {props.estimate.sub.map((est, k) => (
@@ -81,9 +84,9 @@ function EstimateRow(props: SubEstimateProps) {
             effortConfig={props.effortConfig}
           />
         ))}
-        {!!props.estimate.sub.length && (
-          <Button variant="outline" onClick={addRow}>
-            +
+        {!!props.estimate.sub.length && (  
+          <Button variant="ghost" size="sm" onClick={addRow}>
+            + Add item
           </Button>
         )}
       </Box>

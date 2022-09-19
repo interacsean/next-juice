@@ -29,9 +29,11 @@ const EstimateForm: React.FC<EstimateFormPublicProps> = (
           effortConfig={estimateState.config}
         />
       ))}
-      <Button variant="outline" onClick={addRow}>
-        +
-      </Button>
+      <Box marginLeft="2.5rem">
+        <Button variant="ghost" size="sm" onClick={addRow}>
+          + Add item
+        </Button>
+      </Box>
     </Box>
   );
 };

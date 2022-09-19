@@ -37,3 +37,8 @@ To consider:
 
 - After each iteration, IM can run a summary function that might be
  useful for actors to know
+  
+
+- Build Graph of actionSubscriptions
+- Flyweight - 
+- 

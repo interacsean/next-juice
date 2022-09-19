@@ -1,6 +1,6 @@
-import { Actor } from 'model/Actor/Actor';
 
 export interface ActorInterface<T extends {[k: string]: any}> {
+  attributes: T,
   // Consider https://blog.logrocket.com/writing-constructor-typescript/
   // constructor: (
   //   attributes: T,
@@ -18,7 +18,7 @@ export interface ActorInterface<T extends {[k: string]: any}> {
 
 export interface Action<T, U> {
   properties: T;
-  actor: Actor<U>;
+  actor: ActorInterface<U>;
   iteration: number;
 }
 

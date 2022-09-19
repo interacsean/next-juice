@@ -2,8 +2,9 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { Action, ActorSet } from 'model/Actor/Actor.types';
 import { rand } from 'utils/data/rand/rand';
 import emptyArray from 'utils/data/emptyArray/emptyArray';
-import { Actor, getActorSummary } from 'model/Actor/Actor';
+import { getActorSummary } from 'model/Actor/Actor';
 import runIterations from 'model/IterationManager/IterationManger';
+import { TwitterActor, TwitterActorAttributes } from 'api/routes/test/TwitterActor';
 // import { GetHealthResponseData } from "types/api/health/health.types";
 
 type RequestParams = {
@@ -11,18 +12,14 @@ type RequestParams = {
   iterations: number;
 };
 
-type ActorAttributes = {
-  happiness: number;
-  followers: number;
-  likelihoodToPost: number; // percent as decimal
-  politicalLeaning: [number, number]; // compass in decimal
-};
-
 type ActionAttrs = {
   aggression: number; // percent as decmial
   reach: number;
 };
 
+export type TwitterExperimentContext = {
+  numActors
+};
 export default function test(_req: NextApiRequest, res: NextApiResponse) {
   const reqParams: RequestParams = {
     numActors: 10000,
@@ -30,49 +27,20 @@ export default function test(_req: NextApiRequest, res: NextApiResponse) {
   };
   const experimentParams = reqParams;
 
-  function actionResponse(
-    action: Action<ActionAttrs, ActorAttributes>,
-    actor: Actor<ActorAttributes>,
-  ) {
-    if (
-      Math.random() * (1 + experimentParams.numActors) <
-      action.properties.reach
-    ) {
-      actor.attributes.happiness = actor.attributes.happiness + 0.01;
-    }
-  }
-
-  function iterationBehavior(
-    iterationNumber: number,
-    actor: Actor<ActorAttributes>,
-  ) {
-    if (Math.random() < actor.attributes.likelihoodToPost) {
-      return [
-        {
-          actor,
-          properties: {
-            aggression: Math.random(),
-            reach: Math.random() * actor.attributes.followers, // rand(0, actor.attributes.followers)
-          },
-          iteration: iterationNumber,
-        },
-      ];
-    }
-  }
-
-  const actorSet: ActorSet<ActorAttributes> = emptyArray(
+  const actorSet: ActorSet<TwitterActorAttributes> = emptyArray(
     experimentParams.numActors,
   ).map(
     () =>
-      new Actor(
+      new TwitterActor(
         {
           happiness: Math.random(),
           likelihoodToPost: Math.random() * 0.1,
-          politicalLeaning: [rand(1, 999), rand(1, 999)],
-          followers: rand(0, 100),
+          politicalLeaning: [Math.random(), Math.random()],
+          followers: Math.random() * 1000,
         },
-        iterationBehavior,
-        actionResponse,
+        {
+          numActors: experimentParams.numActors
+        },
       ),
   );
 

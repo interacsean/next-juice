@@ -14,7 +14,7 @@ const {{CompName}}: React.FC<{{CompName}}PublicProps> = (
   );
 };
 
-export default {{CompName}};
+export { {{CompName}} };
 `;
 
 module.exports = async ({ cliArgs, cliFlags, templateName, makey }) => {
